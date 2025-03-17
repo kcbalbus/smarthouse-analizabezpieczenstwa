@@ -1,9 +1,17 @@
-import './App.css'
+import "./App.css"
+import {Route, BrowserRouter as Router, Routes} from 'react-router-dom';
+import Home from "./pages/Home.tsx";
 
 function App() {
 
   return (
-    <h1>AAA</h1>
+      <div>
+          <Router>
+              <Routes>
+                  <Route path="/" element={<Home />} />
+              </Routes>
+          </Router>
+      </div>
   )
 }
 
