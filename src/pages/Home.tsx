@@ -1,11 +1,13 @@
 import {useAuth0} from "@auth0/auth0-react";
 import Loading from "../components/global/Loading.tsx";
 import WelcomeCard from "../components/Home/WelcomeCard.tsx";
-import LogoutButton from "../components/global/LogoutButton.tsx";
+import useSensorsStore from "../stores/SensorsStore.ts";
+
 
 function Home() {
 
     const { user, isAuthenticated, isLoading } = useAuth0();
+    const {telemetry, alert} = useSensorsStore();
 
     if (isLoading) {
         return <Loading/>;
@@ -18,7 +20,12 @@ function Home() {
     return (
         <div>
             <h1>Welcome, {user?.email}</h1>
-            <LogoutButton/>
+            <div>
+                {telemetry.deviceId}
+            </div>
+            <div>
+                {alert.severity}
+            </div>
         </div>
     )
 }

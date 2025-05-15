@@ -1,8 +1,15 @@
 import '../../styles/global/Navbar.css';
 import home_icon from  "../../assets/home_icon.png";
 import LogoutButton from "./LogoutButton.tsx";
+import {useAuth0} from "@auth0/auth0-react";
 
 const Navbar = () => {
+
+    const {isAuthenticated} = useAuth0();
+
+    if (!isAuthenticated) {
+        return <></>;
+    }
 
     return (
         <nav className="navbar">
