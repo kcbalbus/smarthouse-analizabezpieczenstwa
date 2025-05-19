@@ -33,6 +33,8 @@
     font-weight: bold;
     font-size: 1.25rem;
     color: var(--primary);
+    display: flex;
+    align-items: center;
 }
 
 .navbar__left {
@@ -41,19 +43,22 @@
     gap: 1.5rem;
 }
 
-.navbar__logo {
-    display: flex;
-    align-items: center;
+.navbar__logo:hover {
+    color: var(--primary);
 }
 
 .navbar__link {
     color: var(--color);
-    font-size: 1rem;
+    font-size: 1.1rem;
     transition: color 0.2s;
 }
 
 .navbar__link:hover {
     color: var(--primary);
+}
+
+.navbar__link.active {
+    border-bottom: 2px solid var(--primary);;
 }
 
 .navbar__right {

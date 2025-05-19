@@ -1,14 +1,14 @@
+import React from "react";
 import LoginButton from "../global/LoginButton.tsx";
 
-function WelcomeCard() {
-
+const WelcomeCardBeforeLogin: React.FC = () => {
     return (
         <div>
             <h1>Smart House</h1>
             <p>You need to be logged in to access this data.</p>
-            <LoginButton/>
+            <LoginButton />
         </div>
-    )
-}
+    );
+};
 
-export default WelcomeCard
+export default WelcomeCardBeforeLogin;

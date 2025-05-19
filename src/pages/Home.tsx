@@ -1,32 +1,17 @@
 import {useAuth0} from "@auth0/auth0-react";
-import Loading from "../components/global/Loading.tsx";
-import WelcomeCard from "../components/Home/WelcomeCard.tsx";
-import useSensorsStore from "../stores/SensorsStore.ts";
+import WelcomeCardBeforeLogin from "../components/Home/WelcomeCardBeforeLogin.tsx";
+import WelcomeCardAfterLogin from "../components/Home/WelcomeCardAfterLogin.tsx";
 
+const Home = () => {
 
-function Home() {
-
-    const { user, isAuthenticated, isLoading } = useAuth0();
-    const {telemetry, alert} = useSensorsStore();
-
-    if (isLoading) {
-        return <Loading/>;
-    }
+    const { isAuthenticated} = useAuth0();
 
     if (!isAuthenticated) {
-        return <WelcomeCard/>;
+        return <WelcomeCardBeforeLogin/>;
     }
 
     return (
-        <div>
-            <h1>Welcome, {user?.email}</h1>
-            <div>
-                {telemetry.deviceId}
-            </div>
-            <div>
-                {alert.severity}
-            </div>
-        </div>
+        <WelcomeCardAfterLogin/>
     )
 }
 

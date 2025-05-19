@@ -8,5 +8,7 @@ export const API_URLS: Record<string, string> = {
 
 export const APP_ROOT_URL: string = 'http://localhost:5173';
 export const APP_URLS: Record<string, string> = {
-    home: `${APP_ROOT_URL}/`
+    home: `${APP_ROOT_URL}/`,
+    sensors: `${APP_ROOT_URL}/sensors`,
+    alerts: `${APP_ROOT_URL}/alerts`,
 };
