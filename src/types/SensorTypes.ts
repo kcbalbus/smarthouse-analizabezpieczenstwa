@@ -13,8 +13,8 @@ export interface EnergySensor extends Sensor {
 
 export interface FridgeSensor extends Sensor {
     type: 'fridge';
-    currentPower: number;
-    totalEnergy: number;
+    temperature: number;
+    doorOpen: boolean;
 }
 
 export interface LightSensor extends Sensor {

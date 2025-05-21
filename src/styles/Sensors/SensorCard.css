@@ -1,0 +1,133 @@
+:root {
+    --sensor-border-width: 4px;
+    --sensor-border-width-hover: 5px;
+
+
+    --energy: rgba(255, 215, 0, 0.75);
+    --fridge: rgba(0, 191, 255, 0.75);
+    --light: rgba(255, 255, 51, 0.75);
+    --motion: rgba(255, 105, 180, 0.74);
+    --smoke: rgba(169, 169, 169, 0.75);
+    --temperature: rgba(255, 69, 0, 0.75);
+}
+
+.sensor-card {
+    width: 300px;
+    background-color: white;
+    padding: 12px;
+    border: var(--sensor-border-width) solid var(--primary);
+    border-radius: 10px;
+    color: black;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sensor-card:hover {
+    border: var(--sensor-border-width-hover) solid var(--primary);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+.sensor-card strong {
+    font-weight: bold;
+}
+
+.sensor-card-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 10px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    border: none;
+    background-color: var(--background-color);
+}
+
+.sensor-card-header p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.sensor-card-content p {
+    margin: 4px 7px;
+    font-size: 0.95rem;
+}
+
+.sensor-card-title {
+    font-weight: 400;
+    font-size: 1.1rem;
+}
+
+.energy-sensor-card {
+    border: var(--sensor-border-width) solid var(--energy);
+}
+
+.energy-sensor-card:hover {
+    border: var(--sensor-border-width-hover) solid var(--energy);
+}
+
+.fridge-sensor-card {
+    border: var(--sensor-border-width) solid var(--fridge);
+}
+
+.fridge-sensor-card:hover {
+    border: var(--sensor-border-width-hover) solid var(--fridge);
+}
+
+.light-sensor-card {
+    border: var(--sensor-border-width) solid var(--light);
+}
+
+.light-sensor-card:hover {
+    border: var(--sensor-border-width-hover) solid var(--light);
+}
+
+.motion-sensor-card {
+    border: var(--sensor-border-width) solid var(--motion);
+}
+
+.motion-sensor-card:hover {
+    border: var(--sensor-border-width-hover) solid var(--motion);
+}
+
+.smoke-sensor-card {
+    border: var(--sensor-border-width) solid var(--smoke);
+}
+
+.smoke-sensor-card:hover {
+    border: var(--sensor-border-width-hover) solid var(--smoke);
+}
+
+.temperature-sensor-card {
+    border: var(--sensor-border-width) solid var(--temperature);
+}
+
+.temperature-sensor-card:hover {
+    border: var(--sensor-border-width-hover) solid var(--temperature);
+}
+
+
+.energy-sensor-card .sensor-card-header {
+    background-color: color-mix(in srgb, var(--energy) 20%, white);
+}
+
+.fridge-sensor-card .sensor-card-header {
+    background-color: color-mix(in srgb, var(--fridge) 20%, white);
+}
+
+.light-sensor-card .sensor-card-header {
+    background-color: color-mix(in srgb, var(--light) 20%, white);
+}
+
+.motion-sensor-card .sensor-card-header {
+    background-color: color-mix(in srgb, var(--motion) 20%, white);
+}
+
+.smoke-sensor-card .sensor-card-header {
+    background-color: color-mix(in srgb, var(--smoke) 20%, white);
+}
+
+.temperature-sensor-card .sensor-card-header {
+    background-color: color-mix(in srgb, var(--temperature) 20%, white);
+}

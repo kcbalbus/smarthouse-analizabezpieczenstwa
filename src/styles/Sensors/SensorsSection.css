@@ -1,0 +1,28 @@
+.sensors-section {
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+.sensors-section-title {
+    border-bottom: 3px solid var(--color);
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-align: left;
+    padding-left: 10px;
+}
+
+.sensors-section-title p {
+    font-size: 1.5rem;
+    letter-spacing: 0.5px;
+    margin-bottom: 15px;
+}
+
+.sensors-section-cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 24px;
+    justify-content: flex-start;
+}
