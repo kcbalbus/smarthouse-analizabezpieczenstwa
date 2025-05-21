@@ -13,7 +13,7 @@ const EnergySensorCard: React.FC<EnergySensorCardProps> = ({sensor}) => {
             <SensorCardHeader sensor={sensor} />
             <div className="sensor-card-content">
                 <p>Current power: {sensor.currentPower.toFixed(2)} W</p>
-                <p>Total power: {(sensor.totalEnergy.toFixed(2))} kWh</p>
+                <p>Total power: {(sensor.totalEnergy.toFixed(4))} kWh</p>
             </div>
 
         </div>

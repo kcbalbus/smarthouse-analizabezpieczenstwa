@@ -17,13 +17,14 @@ import SmokeSensorCard from "./SmokeSensorCard.tsx";
 import TemperatureSensorCard from "./TemperatureSensorCard.tsx";
 
 interface SensorsSectionProps {
+    id?: string;
     title: string;
     sensors: Sensor[];
 }
 
-const SensorsSection: React.FC<SensorsSectionProps> = ({ title, sensors }) => {
+const SensorsSection: React.FC<SensorsSectionProps> = ({ id, title, sensors }) => {
     return (
-        <div className="sensors-section">
+        <div id={id} className="sensors-section">
             <div className="sensors-section-title">
                 <p >{title}</p>
             </div>

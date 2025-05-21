@@ -1,0 +1,53 @@
+html {
+    scroll-behavior: smooth;
+}
+
+.sensors-page {
+    display: flex;
+    gap: 30px;
+}
+
+.sensors-menu {
+    position: sticky;
+    top: 4rem;
+    min-width: 180px;
+    height: calc(100vh - 4rem);
+    padding: 20px;
+    background-color: var(--background-color-darker);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.sensors-menu-title {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+.sensors-menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sensors-menu li {
+    margin: 10px 0;
+}
+
+.sensors-menu a {
+    color: var(--color);
+    text-decoration: none;
+    font-weight: 400;
+    transition: font-weight 0.1s;
+    font-size: 1.05rem;
+}
+
+.sensors-menu a:hover {
+    font-weight: 500;
+}
+
+.sensors-list {
+    flex: 1;
+    margin-right: 30px;
+}

@@ -6,8 +6,10 @@
 
   --color: #213547;
   --background-color: #f8f8f8;
+  --background-color-darker: #ededed;
   --primary: #9D00FF;
   --primary-hover: #B069DB;
+  --primary-background: rgba(157, 0, 255, 0.5);
   --primary-border: ;
   --primary-text: #FFFFFF;
 
@@ -21,7 +23,7 @@ body {
   padding-top: 4rem;
   margin: 0;
   min-width: 320px;
-  min-height: 100vh;
+  min-height: calc(100vh - 4rem);
   color: var(--color);
   background-color: var(--background-color);
 }
