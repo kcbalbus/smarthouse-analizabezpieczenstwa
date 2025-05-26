@@ -10,6 +10,7 @@ const SensorDetailsHeader: React.FC<SensorDetailsHeaderProps> = ({sensor}) => {
     return (
         <div className="sensor-details-page">
             <p>{sensor.deviceId}</p>
+            <p>{sensor.type}</p>
             <p>Last update: {sensor.timestamp}</p>
         </div>
     )

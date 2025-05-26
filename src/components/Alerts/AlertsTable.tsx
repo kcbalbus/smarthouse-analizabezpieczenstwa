@@ -18,9 +18,15 @@ const AlertsTable: React.FC<AlertsTableProps> = ({alerts}) => {
                 <p>Description</p>
             </div>
             <div className="alerts-body">
-                {alerts.map((alert, index) => (
-                    <AlertRecord key={index} alert={alert} />
-                ))}
+                {
+                   alerts?.length === 0 ? (
+                       <p>No alerts found.</p>
+                   ) : (
+                       alerts.map((alert, index) => (
+                           <AlertRecord key={index} alert={alert} />
+                       )
+                   ))
+                }
             </div>
         </div>
     )

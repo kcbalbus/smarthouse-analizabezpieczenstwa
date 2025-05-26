@@ -1,12 +1,14 @@
 import React from "react";
 import {Alert} from "../../types/StoreTypes.ts";
 import "../../styles/Alerts/AlertsTable.css"
+import {useNavigate} from "react-router-dom";
 
 interface AlertRecordProps {
     alert: Alert;
 }
 
 const AlertRecord: React.FC<AlertRecordProps> = ({alert}) => {
+    const navigate = useNavigate();
 
     const displayDate = (timestamp: number) => {
         const date = new Date(timestamp);
@@ -18,7 +20,9 @@ const AlertRecord: React.FC<AlertRecordProps> = ({alert}) => {
 
     return (
         <div className="alert-record">
-            <p className="device">{alert.deviceId}</p>
+            <p onClick={() => navigate(`/sensors/${alert.deviceId}`)} className="device">
+                {alert.deviceId}
+            </p>
             <p>{displayDate(alert.timestamp)}</p>
             <p className={severityClass}>{alert.severity}</p>
             <p>{alert.description}</p>

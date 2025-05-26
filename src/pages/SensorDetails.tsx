@@ -17,13 +17,21 @@ import LightSensorDetailsMeasurements from "../components/SensorDetails/LightSen
 import MotionSensorDetailsMeasurements from "../components/SensorDetails/MotionSensorDetailsMeasurements.tsx";
 import SmokeSensorDetailsMeasurements from "../components/SensorDetails/SmokeSensorDetailsMeasurements.tsx";
 import TemperatureSensorDetailsMeasurements from "../components/SensorDetails/TemperatureSensorDetailsMeasurements.tsx";
+import {useParams} from "react-router-dom";
 
 
 
 const SensorDetails: React.FC = () => {
+    const { id } = useParams();
     const {sensors, alerts} = useSensorsStore()
 
-    const sensor: Sensor = sensors[0]
+    const sensor: Sensor | undefined = sensors.find((sensor) => sensor.deviceId === id);
+
+    const sensorAlerts = alerts.filter(alert => alert.deviceId === id);
+
+    if (!sensor) {
+        return <p>Sensor not found</p>;
+    }
 
     const renderSensorsMeasurements = () => {
         switch (sensor.type) {
@@ -48,7 +56,7 @@ const SensorDetails: React.FC = () => {
         <div className="sensor-details-page">
             <SensorDetailsHeader sensor={sensor}/>
             {renderSensorsMeasurements()}
-            <SensorDetailsAlerts sensorsAlerts={alerts}/>
+            <SensorDetailsAlerts sensorsAlerts={sensorAlerts}/>
         </div>
     )
 }

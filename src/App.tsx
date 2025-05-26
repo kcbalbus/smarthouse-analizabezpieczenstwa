@@ -6,6 +6,8 @@ import RequireWebSocket from "./components/require/RequireWebSocket.tsx";
 import RequireAuth from "./components/require/RequireAuth.tsx";
 import Sensors from "./pages/Sensors.tsx";
 import Alerts from "./pages/Alerts.tsx";
+import SensorDetails from "./pages/SensorDetails.tsx";
+import ScrollToTop from "./components/global/ScrollToTop.tsx";
 
 
 function App() {
@@ -14,6 +16,7 @@ function App() {
       <div>
           <Router>
               <Navbar />
+              <ScrollToTop/>
               <Routes>
                   <Route path="/" element={
                       <Home />
@@ -32,6 +35,14 @@ function App() {
                           </RequireWebSocket>
                       </RequireAuth>
                   } />
+                  <Route path="/sensors/:id" element={
+                      <RequireAuth>
+                          <RequireWebSocket>
+                              <SensorDetails />
+                          </RequireWebSocket>
+                      </RequireAuth>
+                  } />
+
               </Routes>
 
           </Router>
