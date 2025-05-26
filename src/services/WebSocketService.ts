@@ -33,7 +33,7 @@ class WebSocketService {
 
         switch (messageType) {
             case "alert":
-                useSensorsStore.getState().setAlert(parsed.payload);
+                useSensorsStore.getState().setAlerts(parsed.payload);
                 break;
             case "telemetry":
                 useSensorsStore.getState().setTelemetry(parsed.payload);

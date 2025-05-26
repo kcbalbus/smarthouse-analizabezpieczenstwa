@@ -1,5 +1,5 @@
 import React from "react";
-import {EnergySensor} from "../../types/SensorTypes.ts";
+import {EnergySensor} from "../../types/StoreTypes.ts";
 import SensorCardHeader from "./SensorCardHeader.tsx";
 import "../../styles/Sensors/SensorCard.css"
 

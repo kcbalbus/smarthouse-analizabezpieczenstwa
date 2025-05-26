@@ -1,5 +1,5 @@
 import React from "react";
-import {LightSensor} from "../../types/SensorTypes.ts";
+import {LightSensor} from "../../types/StoreTypes.ts";
 import SensorCardHeader from "./SensorCardHeader.tsx";
 import "../../styles/Sensors/SensorCard.css"
 

@@ -8,30 +8,47 @@ import {
     SmokeSensor,
     TemperatureSensor,
     MotionSensor,
-    LightSensor
-} from "../types/SensorTypes.ts";
+    LightSensor, Alert
+} from "../types/StoreTypes.ts";
 
 
 interface SensorStoreState {
     sensors: Sensor[]
-    alert: string
+    alerts: Alert[]
+    resetStore: () => void
+    resetAlerts: () => void
+    resetSensors: () => void
     startWebSocketConnection: () => void
     closeWebSocketConnection: () => void
     setTelemetry: (telemetry: Sensor) => void
-    setAlert: (alert: string) => void
+    setAlerts: (alert: Alert) => void
     getEnergySensors: () => EnergySensor[];
     getFridgeSensors: () => FridgeSensor[];
     getSmokeSensors: () => SmokeSensor[];
     getTemperatureSensors: () => TemperatureSensor[];
     getMotionSensors: () => MotionSensor[];
     getLightSensors: () => LightSensor[];
+    getAllSensorsId: () => string[];
+    checkSensorsTypeFromId: (id: string, type: string) => boolean;
 }
 
 const useSensorsStore = create<SensorStoreState>()(
     persist(
         (set, get) => ({
             sensors: [],
-            alert: "",
+            alerts: [],
+
+            resetStore: () => {
+                set({ sensors: [], alerts: [] });
+            },
+
+            resetSensors: () => {
+                set({ sensors: [] });
+            },
+
+            resetAlerts: () => {
+                set({ alerts: [] });
+            },
 
             startWebSocketConnection: () => {
                 ApiService.startTelemetryConnection();
@@ -85,10 +102,25 @@ const useSensorsStore = create<SensorStoreState>()(
             
             
 
-            setAlert: (alert: string) => {
-                set({ alert });
+            setAlerts: (alert: Alert) => {
+                set((state => {
+                    return {
+                        alerts: [alert, ...state.alerts]
+                    }
+                }));
             },
 
+            getAllSensorsId: () => {
+                const sensors = get().sensors;
+                const deviceIds = sensors.map(sensor => sensor.deviceId);
+                return Array.from(new Set(deviceIds));
+            },
+
+            checkSensorsTypeFromId: (id: string, type: string) => {
+                const sensors = get().sensors;
+                const sensor = sensors.filter(sensor => sensor.deviceId === id);
+                return sensor[0].type === type;
+            }
 
         }),
         {

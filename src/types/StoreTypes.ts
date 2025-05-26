@@ -1,3 +1,10 @@
+export interface Alert {
+    deviceId: string;
+    severity: "INFO" | "WARNING" | "CRITICAL";
+    timestamp: number;
+    description: string
+}
+
 export interface Sensor {
     deviceId: string;
     authKey: string;

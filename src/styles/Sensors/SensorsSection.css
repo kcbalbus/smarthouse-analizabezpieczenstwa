@@ -5,7 +5,7 @@
 }
 
 .sensors-section-title {
-    border-bottom: 3px solid var(--color);
+    border-bottom: 2px solid var(--color);
     margin-bottom: 20px;
     font-size: 1.3rem;
     font-weight: 600;
@@ -16,7 +16,7 @@
 .sensors-section-title p {
     font-size: 1.5rem;
     letter-spacing: 0.5px;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
 .sensors-section-cards {

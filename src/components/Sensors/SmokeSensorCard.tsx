@@ -1,5 +1,5 @@
 import React from "react";
-import {SmokeSensor} from "../../types/SensorTypes.ts";
+import {SmokeSensor} from "../../types/StoreTypes.ts";
 import SensorCardHeader from "./SensorCardHeader.tsx";
 import "../../styles/Sensors/SensorCard.css"
 

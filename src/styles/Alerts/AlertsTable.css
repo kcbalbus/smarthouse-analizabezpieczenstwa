@@ -1,0 +1,123 @@
+.alerts-page-container {
+    margin: 15px auto;
+    width: 80%;
+    max-width: 1200px;
+}
+
+.alerts-table {
+    border-radius: 10px;
+    background-color: white;
+    margin-top: 10px;
+
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.alerts-header, .alert-record {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1.5fr;
+    padding: 12px 20px;
+    align-items: center;
+}
+
+.alerts-header {
+    color: white;
+    background: var(--primary);
+    font-weight: 700;
+    font-size: 1.05rem;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.alerts-header p {
+    margin: 5px;
+}
+
+.alerts-body {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.95rem;
+}
+
+.alert-record {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s ease;
+}
+
+.alert-record:hover {
+    background-color: var(--background-color-darker);
+}
+
+.alert-record p {
+    margin: 0;
+    word-break: break-word;
+}
+
+.device {
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.device:hover {
+    color: var(--primary);
+    cursor: pointer;
+}
+
+.severity-critical {
+    color: red;
+    font-weight: 600;
+}
+.severity-warning {
+    color: orange;
+}
+.severity-info {
+    color: blue;
+}
+
+.alerts-control-bar {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    background-color: white;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.alerts-control-bar label {
+    margin-right: 5px;
+}
+
+.alerts-control-bar input,
+.alerts-control-bar select {
+    padding: 5px 8px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+
+.alerts-control-bar > div {
+    display: flex;
+    flex-direction: row;
+}
+
+.reset-button {
+    background-color: transparent;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    transition: background-color 0.2s ease;
+    padding: 5px 15px;
+}
+
+.reset-button:hover {
+    background-color: var(--primary);
+    color: white;
+    border: 1px solid var(--primary);
+}
+
+.reset-button-div {
+    margin-left: auto;
+}

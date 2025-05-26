@@ -3,6 +3,7 @@ import home_icon from "../../assets/home_icon.png";
 import LogoutButton from "./LogoutButton.tsx";
 import { useAuth0 } from "@auth0/auth0-react";
 import { NavLink } from "react-router-dom";
+import ResetStoreButton from "./ResetStoreButton.tsx";
 
 const Navbar = () => {
     const { isAuthenticated } = useAuth0();
@@ -23,6 +24,7 @@ const Navbar = () => {
                     <NavLink to="/alerts" className="navbar__link">Alerts</NavLink>
                 </div>
                 <div className="navbar__right">
+                    <ResetStoreButton />
                     <LogoutButton />
                 </div>
             </div>

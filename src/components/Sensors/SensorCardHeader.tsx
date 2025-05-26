@@ -1,5 +1,5 @@
 import React from "react";
-import {Sensor} from "../../types/SensorTypes.ts";
+import {Sensor} from "../../types/StoreTypes.ts";
 
 interface SensorCardHeaderProps {
     sensor: Sensor;

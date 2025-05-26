@@ -1,5 +1,5 @@
 import React from "react";
-import {FridgeSensor} from "../../types/SensorTypes.ts";
+import {FridgeSensor} from "../../types/StoreTypes.ts";
 import SensorCardHeader from "./SensorCardHeader.tsx";
 import "../../styles/Sensors/SensorCard.css"
 

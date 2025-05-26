@@ -12,6 +12,7 @@
 }
 
 .sensor-card {
+    cursor: pointer;
     width: 300px;
     background-color: white;
     padding: 12px;

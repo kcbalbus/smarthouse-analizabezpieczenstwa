@@ -7,7 +7,7 @@ import {
     Sensor,
     SmokeSensor,
     TemperatureSensor
-} from "../../types/SensorTypes.ts";
+} from "../../types/StoreTypes.ts";
 import "../../styles/Sensors/SensorsSection.css"
 import EnergySensorCard from "./EnergySensorCard.tsx";
 import FridgeSensorCard from "./FridgeSensorCard.tsx";
