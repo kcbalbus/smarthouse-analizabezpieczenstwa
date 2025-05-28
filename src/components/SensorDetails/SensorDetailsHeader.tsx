@@ -7,11 +7,23 @@ interface SensorDetailsHeaderProps {
 
 const SensorDetailsHeader: React.FC<SensorDetailsHeaderProps> = ({sensor}) => {
 
+    const displayDate = (timestamp: number) => {
+        const date = new Date(timestamp);
+
+        return date.toTimeString().slice(0, 8);
+    }
+
     return (
-        <div className="sensor-details-page">
-            <p>{sensor.deviceId}</p>
-            <p>{sensor.type}</p>
-            <p>Last update: {sensor.timestamp}</p>
+        <div className={`sensor-details-section sensor-details-header ${sensor.type}-details-section`}>
+            <div >
+                <p className="sensor-details-header-title">{sensor.deviceId}</p>
+                <p>Category: {sensor.type}</p>
+            </div>
+            <div>
+                <p>Last update: {displayDate(sensor.timestamp)}</p>
+            </div>
+
+
         </div>
     )
 }

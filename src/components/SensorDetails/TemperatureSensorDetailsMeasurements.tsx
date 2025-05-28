@@ -9,10 +9,10 @@ interface TemperatureSensorDetailsMeasurementsProps {
 const TemperatureSensorDetailsMeasurements: React.FC<TemperatureSensorDetailsMeasurementsProps> = ({sensor}) => {
 
     return(
-        <div className="sensor-details-measurements">
-            <p>Temperature: {sensor.temperature.toFixed(1)}°C</p>
-            <p>Humidity: {sensor.humidity.toFixed(1)}%</p>
-        </div>
+        <>
+            <p><span className="label">Temperature:</span> {sensor.temperature.toFixed(1)}°C</p>
+            <p><span className="label">Humidity:</span> {sensor.humidity.toFixed(1)}%</p>
+        </>
     )
 }
 

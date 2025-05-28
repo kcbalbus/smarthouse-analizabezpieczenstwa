@@ -48,3 +48,12 @@ export interface TemperatureSensor extends Sensor {
     humidity: number;
 }
 
+export interface AlertCondition {
+    deviceType: string;
+    parameter: string;
+    severity: "INFO" | "WARNING" | "CRITICAL";
+    operator: "GREATER_THAN" | "LESS_THAN" | "EQUALS" | "GREATER_OR_EQUAL" | "LESS_OR_EQUAL" | "NOT_EQUALS",
+    value: string;
+    description: string;
+}
+

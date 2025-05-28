@@ -9,11 +9,11 @@ interface SmokeSensorDetailsMeasurementsProps {
 const SmokeSensorDetailsMeasurements: React.FC<SmokeSensorDetailsMeasurementsProps> = ({sensor}) => {
 
     return(
-        <div className="sensor-details-measurements">
-            <p>Smoke level: {sensor.smokeLevel.toFixed(2)}%</p>
-            <p>Battery level: {sensor.batteryLevel.toFixed(0)}%</p>
-            <p>Alarm: {sensor.alarmActive ? "ON" : "OFF"}</p>
-        </div>
+        <>
+            <p><span className="label">Smoke level:</span> {sensor.smokeLevel.toFixed(2)}%</p>
+            <p><span className="label">Battery level:</span> {sensor.batteryLevel.toFixed(0)}%</p>
+            <p><span className="label">Alarm:</span> {sensor.alarmActive ? "ON" : "OFF"}</p>
+        </>
     )
 }
 

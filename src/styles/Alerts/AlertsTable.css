@@ -28,6 +28,35 @@
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
+.alerts-header-energy {
+    color: var(--color);
+    background: var(--energy);
+}
+
+.alerts-header-fridge {
+    background: var(--fridge);
+}
+
+.alerts-header-light {
+    color: var(--color);
+    background: var(--light );
+}
+
+.alerts-header-motion {
+    color: white;
+    background: var(--motion);
+}
+
+.alerts-header-smoke {
+    color: white;
+    background: var(--smoke);
+}
+
+.alerts-header-temperature {
+    color: white;
+    background: var(--temperature);
+}
+
 .alerts-header p {
     margin: 5px;
 }
@@ -54,11 +83,11 @@
 
 .device {
     font-weight: 500;
-    transition: color 0.2s ease;
+    transition: font-weight 0.2s ease;
 }
 
 .device:hover {
-    color: var(--primary);
+    font-weight: 700;
     cursor: pointer;
 }
 

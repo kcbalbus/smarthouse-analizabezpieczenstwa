@@ -5,13 +5,14 @@ import "../../styles/Alerts/AlertsTable.css"
 
 interface AlertsTableProps {
     alerts: Alert[]
+    sensorType?: string
 }
 
-const AlertsTable: React.FC<AlertsTableProps> = ({alerts}) => {
+const AlertsTable: React.FC<AlertsTableProps> = ({alerts, sensorType}) => {
 
     return (
         <div className="alerts-table">
-            <div className="alerts-header">
+            <div className={`alerts-header alerts-header-${sensorType}`}>
                 <p>Device</p>
                 <p>Date</p>
                 <p>Severity</p>

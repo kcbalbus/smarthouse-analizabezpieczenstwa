@@ -1,14 +1,6 @@
 :root {
     --sensor-border-width: 4px;
     --sensor-border-width-hover: 5px;
-
-
-    --energy: rgba(255, 215, 0, 0.75);
-    --fridge: rgba(0, 191, 255, 0.75);
-    --light: rgba(255, 255, 51, 0.75);
-    --motion: rgba(255, 105, 180, 0.74);
-    --smoke: rgba(169, 169, 169, 0.75);
-    --temperature: rgba(255, 69, 0, 0.75);
 }
 
 .sensor-card {

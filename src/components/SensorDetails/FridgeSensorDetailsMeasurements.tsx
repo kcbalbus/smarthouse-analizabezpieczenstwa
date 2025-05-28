@@ -9,10 +9,10 @@ interface FridgeSensorDetailsMeasurementsProps {
 const FridgeSensorDetailsMeasurements: React.FC<FridgeSensorDetailsMeasurementsProps> = ({sensor}) => {
 
     return(
-        <div className="sensor-details-measurements">
-            <p>Temperature: {sensor.temperature.toFixed(1)}°C</p>
-            <p>Doors: {sensor.doorOpen ? "Open" : "Closed"}</p>
-        </div>
+        <>
+            <p><span className="label">Temperature:</span> {sensor.temperature.toFixed(1)}°C</p>
+            <p><span className="label">Doors:</span> {sensor.doorOpen ? "Open" : "Closed"}</p>
+        </>
     )
 }
 

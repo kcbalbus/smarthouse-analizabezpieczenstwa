@@ -9,10 +9,10 @@ interface MotionSensorDetailsMeasurementsProps {
 const MotionSensorDetailsMeasurements: React.FC<MotionSensorDetailsMeasurementsProps> = ({sensor}) => {
 
     return(
-        <div className="sensor-details-measurements">
-            <p>Motion Detected: {sensor.motionDetected ? "YES" : "NO"}</p>
+        <>
+            <p><span className="label">Motion Detected:</span> {sensor.motionDetected ? "YES" : "NO"}</p>
 
-        </div>
+        </>
     )
 }
 

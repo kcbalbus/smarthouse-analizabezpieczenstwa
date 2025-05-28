@@ -4,13 +4,14 @@ import AlertsTable from "../Alerts/AlertsTable.tsx";
 
 interface SensorDetailsAlertsProps {
     sensorsAlerts: Alert[],
+    sensorType: string
 }
 
-const SensorDetailsAlerts: React.FC<SensorDetailsAlertsProps> = ({sensorsAlerts}) => {
+const SensorDetailsAlerts: React.FC<SensorDetailsAlertsProps> = ({sensorsAlerts, sensorType}) => {
 
     return (
-        <div className="sensor-details-alerts">
-            <AlertsTable alerts={sensorsAlerts} />
+        <div>
+            <AlertsTable alerts={sensorsAlerts} sensorType={sensorType}  />
         </div>
     )
 }

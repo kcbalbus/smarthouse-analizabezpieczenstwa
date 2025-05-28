@@ -1,0 +1,156 @@
+:root {
+    --sensor-border-width: 3px;
+    --sensor-border-width-hover: 5px;
+}
+
+.sensor-details-page {
+    margin: 15px auto;
+    width: 80%;
+    max-width: 1200px;
+}
+
+.sensor-details-section {
+    background-color: white;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    border: var(--sensor-border-width) solid var(--primary);
+}
+
+.energy-details-section {
+    border-color: var(--energy);
+}
+
+.fridge-details-section {
+    border-color: var(--fridge);
+}
+
+.light-details-section {
+    border-color: var(--light);
+}
+
+.motion-details-section {
+    border-color: var(--motion);
+}
+
+.smoke-details-section {
+    border-color: var(--smoke);
+}
+
+.temperature-details-section {
+    border-color: var(--temperature);
+}
+
+.sensor-details-basic-info {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.sensor-details-header {
+    display: flex;
+    justify-content: space-between;
+    flex: 0.75;
+    text-align: left;
+}
+
+.sensor-details-measurements {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    flex: 0.25;
+}
+
+.sensor-details-measurements p {
+    margin: 7px;
+}
+
+.sensor-details-header p {
+    margin: 15px;
+}
+
+.sensor-details-header-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.sensor-details-measurements p span.label
+{
+    font-weight: 500;
+}
+
+
+.fab-settings {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+
+    border-radius: 50%;
+    width: 64px;
+    height: 64px;
+    font-size: 1.4rem;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.fab-settings:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    filter: brightness(0.9);
+}
+
+.fab-settings-energy {
+   background-color: var(--energy);
+}
+
+.fab-settings-fridge {
+    background-color: var(--fridge);
+}
+
+.fab-settings-light {
+    background-color: var(--light);
+}
+
+.fab-settings-motion {
+    background-color: var(--motion);
+}
+
+.fab-settings-smoke {
+    background-color: var(--smoke);
+}
+
+.fab-settings-temperature {
+    background-color: var(--temperature);
+}
+
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 100000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    width: 90%;
+    z-index: 100;
+}

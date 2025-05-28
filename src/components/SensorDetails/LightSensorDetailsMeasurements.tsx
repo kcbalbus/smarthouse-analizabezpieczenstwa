@@ -9,10 +9,10 @@ interface LightSensorDetailsMeasurementsProps {
 const LightSensorDetailsMeasurements: React.FC<LightSensorDetailsMeasurementsProps> = ({sensor}) => {
 
     return(
-        <div className="sensor-details-measurements">
-            <p>Status: {sensor.state ? "ON" : "OFF"}</p>
-            <p>Current brightness: {sensor.brightness}</p>
-        </div>
+        <>
+            <p><span className="label">Status:</span> {sensor.state ? "ON" : "OFF"}</p>
+            <p><span className="label">Current brightness:</span> {sensor.brightness}</p>
+        </>
     )
 }
 

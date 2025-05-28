@@ -9,10 +9,10 @@ interface EnergySensorDetailsMeasurementsProps {
 const EnergySensorDetailsMeasurements: React.FC<EnergySensorDetailsMeasurementsProps> = ({sensor}) => {
 
     return(
-        <div className="sensor-details-measurements">
-            <p>Current power: {sensor.currentPower.toFixed(2)} W</p>
-            <p>Total power: {(sensor.totalEnergy.toFixed(4))} kWh</p>
-        </div>
+        <>
+            <p><span className="label">Current power:</span> {sensor.currentPower.toFixed(2)} W</p>
+            <p><span className="label">Total power:</span> {(sensor.totalEnergy.toFixed(4))} kWh</p>
+        </>
     )
 }
 
