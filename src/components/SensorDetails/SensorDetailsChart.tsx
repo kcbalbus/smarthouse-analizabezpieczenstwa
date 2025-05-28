@@ -1,3 +1,5 @@
+/*
+
 import "../../styles/SensorDetails/SensorDetails.css"
 import {Sensor} from "../../types/StoreTypes.ts";
 
@@ -7,6 +9,7 @@ interface SensorDetailsChartProps {
 
 const SensorDetailsChart: React.FC<SensorDetailsChartProps> = ({sensorsHistory}) => {
 
+
     return (
         <div className="sensor-details-chart">
             <p>Chart</p>
@@ -15,3 +18,5 @@ const SensorDetailsChart: React.FC<SensorDetailsChartProps> = ({sensorsHistory})
 }
 
 export default SensorDetailsChart
+
+*/

@@ -8,13 +8,14 @@ import {
     SmokeSensor,
     TemperatureSensor,
     MotionSensor,
-    LightSensor, Alert
+    LightSensor, Alert, AlertCondition
 } from "../types/StoreTypes.ts";
 
 
 interface SensorStoreState {
     sensors: Sensor[]
     alerts: Alert[]
+    conditions: AlertCondition[]
     resetStore: () => void
     resetAlerts: () => void
     resetSensors: () => void
@@ -30,6 +31,7 @@ interface SensorStoreState {
     getLightSensors: () => LightSensor[];
     getAllSensorsId: () => string[];
     checkSensorsTypeFromId: (id: string, type: string) => boolean;
+    getAlertConditions: () => Promise<AlertCondition[]>;
 }
 
 const useSensorsStore = create<SensorStoreState>()(
@@ -37,6 +39,7 @@ const useSensorsStore = create<SensorStoreState>()(
         (set, get) => ({
             sensors: [],
             alerts: [],
+            conditions: [],
 
             resetStore: () => {
                 set({ sensors: [], alerts: [] });
@@ -120,7 +123,21 @@ const useSensorsStore = create<SensorStoreState>()(
                 const sensors = get().sensors;
                 const sensor = sensors.filter(sensor => sensor.deviceId === id);
                 return sensor[0].type === type;
+            },
+
+            getAlertConditions: async () => {
+                try {
+                    const response = await ApiService.getAllConditions();
+                    if (response) {
+                        set({ conditions: response });
+                    }
+                    return response;
+                } catch (error) {
+                    console.error("Error fetching alert conditions:", error);
+                    return [];
+                }
             }
+
 
         }),
         {
