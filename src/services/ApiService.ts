@@ -1,16 +1,15 @@
 import RestService from "./RestService";
 import {API_URLS} from "../utils/URLS";
-import WebSocketService from "./WebSocketService.ts";
+import webSocketService from "./WebSocketService.ts";
 
 class ApiService {
-    private static webSocket = new WebSocketService();
 
     static startTelemetryConnection() {
-        this.webSocket.connectTelemetry();
+        webSocketService.connectTelemetry();
     }
 
     static closeTelemetryConnection() {
-        this.webSocket.closeAll();
+        webSocketService.disconnectTelemetry();
     }
 
 

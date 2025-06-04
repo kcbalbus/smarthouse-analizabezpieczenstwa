@@ -6,17 +6,15 @@ interface RequireWebSocketProps {
 }
 
 const RequireWebSocket = ({ children }: RequireWebSocketProps) => {
-    const {startWebSocketConnection} = useSensorsStore();
+    const {startWebSocketConnection, closeWebSocketConnection} = useSensorsStore();
 
     useEffect(() => {
         startWebSocketConnection();
 
-        /*
-        return (() => {
+        return () => {
             closeWebSocketConnection();
-        })
-         */
-    })
+        };
+    }, [closeWebSocketConnection, startWebSocketConnection]);
 
 
     return children;

@@ -1,23 +1,36 @@
 import {API_URLS} from "../utils/URLS.ts";
 import useSensorsStore from "../stores/SensorsStore.ts";
 
-
-
 class WebSocketService {
-
     private telemetrySocket: WebSocket | null = null;
+    private isTelemetryConnected: boolean = false;
 
     connectTelemetry(): void {
-        if (this.telemetrySocket && this.telemetrySocket.readyState === WebSocket.OPEN) return;
+        if (this.isTelemetryConnected) {
+            console.warn("Telemetry WebSocket is already connected.");
+            return;
+        }
 
         this.telemetrySocket = new WebSocket(API_URLS.websocket_telemetry);
+
+        this.telemetrySocket.onopen = () => {
+            console.log("Telemetry WebSocket opened");
+            this.isTelemetryConnected = true;
+        };
 
         this.telemetrySocket.onmessage = (event) => {
             this.onTelemetryMessage(event.data);
         };
 
-        this.telemetrySocket.onclose = () => console.warn("Telemetry WebSocket closed");
-        this.telemetrySocket.onerror = (e) => console.error("Telemetry WebSocket error", e);
+        this.telemetrySocket.onclose = () => {
+            console.warn("Telemetry WebSocket closed");
+            this.isTelemetryConnected = false;
+            this.telemetrySocket = null;
+        };
+
+        this.telemetrySocket.onerror = (e) => {
+            console.error("Telemetry WebSocket error", e);
+        };
     }
 
     onTelemetryMessage(data: string): void {
@@ -43,11 +56,14 @@ class WebSocketService {
         }
     }
 
-
-    closeAll(): void {
-        this.telemetrySocket?.close();
-        this.telemetrySocket = null;
+    disconnectTelemetry(): void {
+        if (this.telemetrySocket) {
+            this.telemetrySocket.close();
+            this.telemetrySocket = null;
+            this.isTelemetryConnected = false;
+        }
     }
 }
 
-export default WebSocketService;
+const webSocketService = new WebSocketService();
+export default webSocketService;
