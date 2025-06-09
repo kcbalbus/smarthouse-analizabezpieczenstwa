@@ -1,4 +1,3 @@
-import {API_URLS} from "../utils/URLS.ts";
 import useSensorsStore from "../stores/SensorsStore.ts";
 import {errorToast} from "../utils/toasts.ts";
 import {AuthService} from "./AuthService.ts";
@@ -19,10 +18,10 @@ class WebSocketService {
             return;
         }
 
-        const wsUrl = new URL(API_URLS.websocket_telemetry);
-        //wsUrl.searchParams.append("token", token);
+        this.telemetrySocket = new WebSocket(`ws://localhost:8081/ws/telemetry?token=${token}`);
 
-        this.telemetrySocket = new WebSocket(wsUrl.toString());
+
+
 
         this.telemetrySocket.onopen = () => {
             console.log("Telemetry WebSocket opened");

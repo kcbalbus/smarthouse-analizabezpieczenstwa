@@ -20,10 +20,10 @@ function App() {
 
     useEffect(() => {
         AuthService.setAccessTokenFetcher(getAccessTokenSilently);
-/*
+
         const token = getAccessTokenSilently();
         console.log(token);
-*/
+
     }, [getAccessTokenSilently]);
 
   return (

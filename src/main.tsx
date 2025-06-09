@@ -10,7 +10,8 @@ createRoot(document.getElementById('root')!).render(
           domain="smarthouse2.eu.auth0.com"
           clientId="3dmDP0wcWQQprP6SgiSLIhLRK1ErnYtM"
           authorizationParams={{
-              redirect_uri: window.location.origin
+              redirect_uri: window.location.origin,
+              audience: "https://smarthouse/api",
           }}
       >
           <App />
