@@ -32,6 +32,8 @@ interface SensorStoreState {
     getAllSensorsId: () => string[];
     checkSensorsTypeFromId: (id: string, type: string) => boolean;
     getAlertConditions: () => Promise<AlertCondition[]>;
+    addAlertCondition: (type: string, param: string, condition: AlertCondition) => Promise<void>;
+    deleteAlertCondition: (type: string, param: string) => Promise<void>;
 }
 
 const useSensorsStore = create<SensorStoreState>()(
@@ -102,8 +104,8 @@ const useSensorsStore = create<SensorStoreState>()(
             getLightSensors: () => {
                 return get().sensors.filter(sensor => sensor.type === 'light') as LightSensor[];
             },
-            
-            
+
+
 
             setAlerts: (alert: Alert) => {
                 set((state => {
@@ -135,6 +137,24 @@ const useSensorsStore = create<SensorStoreState>()(
                 } catch (error) {
                     console.error("Error fetching alert conditions:", error);
                     return [];
+                }
+            },
+
+            addAlertCondition: async (type: string, param: string, alertCondition: AlertCondition)=> {
+                try {
+                    await ApiService.addCondition(type, param, alertCondition);
+                    await get().getAlertConditions();
+                } catch (error) {
+                    console.error("Error fetching alert conditions:", error);
+                }
+            },
+
+            deleteAlertCondition: async (type: string, param: string) => {
+                try {
+                    await ApiService.deleteCondition(type, param);
+                    await get().getAlertConditions();
+                } catch (error) {
+                    console.error("Error fetching alert conditions:", error);
                 }
             }
 

@@ -11,6 +11,7 @@ import ScrollToTop from "./components/global/ScrollToTop.tsx";
 import {useAuth0} from "@auth0/auth0-react";
 import {useEffect} from "react";
 import {AuthService} from "./services/AuthService.ts";
+import {ToastContainer} from "react-toastify";
 
 
 function App() {
@@ -19,10 +20,10 @@ function App() {
 
     useEffect(() => {
         AuthService.setAccessTokenFetcher(getAccessTokenSilently);
-        /*
+/*
         const token = getAccessTokenSilently();
         console.log(token);
-        */
+*/
     }, [getAccessTokenSilently]);
 
   return (
@@ -30,6 +31,7 @@ function App() {
           <Router>
               <Navbar />
               <ScrollToTop/>
+              <ToastContainer limit={3}/>
               <Routes>
                   <Route path="/" element={
                       <Home />

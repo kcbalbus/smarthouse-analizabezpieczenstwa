@@ -153,4 +153,75 @@
     max-width: 500px;
     width: 90%;
     z-index: 100;
+    position: relative;
+}
+
+.alert-condition-item {
+    padding: 12px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    position: relative;
+}
+
+.alert-condition-item p {
+    margin: 4px 0;
+}
+
+.delete-button {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: #c9302c;
+}
+
+.add-condition-form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid lightgrey;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.add-condition-form input,
+.add-condition-form select {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.modal-close-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: var(--color);
+    z-index: 101;
+}
+
+.modal-close-button:hover {
+    color: black;
+    background: transparent;
 }

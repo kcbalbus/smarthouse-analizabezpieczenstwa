@@ -1,5 +1,6 @@
 import {API_URLS} from "../utils/URLS.ts";
 import useSensorsStore from "../stores/SensorsStore.ts";
+import {errorToast} from "../utils/toasts.ts";
 
 class WebSocketService {
     private telemetrySocket: WebSocket | null = null;
@@ -29,6 +30,7 @@ class WebSocketService {
         };
 
         this.telemetrySocket.onerror = (e) => {
+            errorToast("Failed to connect to sensors.");
             console.error("Telemetry WebSocket error", e);
         };
     }
