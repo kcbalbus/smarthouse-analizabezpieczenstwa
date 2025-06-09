@@ -1,18 +1,28 @@
 import {API_URLS} from "../utils/URLS.ts";
 import useSensorsStore from "../stores/SensorsStore.ts";
 import {errorToast} from "../utils/toasts.ts";
+import {AuthService} from "./AuthService.ts";
 
 class WebSocketService {
     private telemetrySocket: WebSocket | null = null;
     private isTelemetryConnected: boolean = false;
 
-    connectTelemetry(): void {
+    async connectTelemetry(): Promise<void> {
         if (this.isTelemetryConnected) {
             console.warn("Telemetry WebSocket is already connected.");
             return;
         }
 
-        this.telemetrySocket = new WebSocket(API_URLS.websocket_telemetry);
+        const token = await AuthService.getAccessToken();
+        if (!token) {
+            errorToast("Failed to connect to sensors.");
+            return;
+        }
+
+        const wsUrl = new URL(API_URLS.websocket_telemetry);
+        //wsUrl.searchParams.append("token", token);
+
+        this.telemetrySocket = new WebSocket(wsUrl.toString());
 
         this.telemetrySocket.onopen = () => {
             console.log("Telemetry WebSocket opened");
