@@ -51,16 +51,19 @@ class ApiService {
         }
     }
 
-    static async addCondition(device: string, param:string, condition: AlertCondition) {
+    static async addCondition(condition: AlertCondition) {
 
         try {
             const response =  await RestService.ajax(
-                `${API_URLS.condition_alert}/${device}/${param}`,
+                `${API_URLS.condition_alert}`,
                 "POST",
                 condition,
             );
 
-            console.log("Settings POST response", response);
+            if (response && response.error) {
+                errorToast("Failed to add condition.")
+                return null;
+            }
 
             return response;
 
@@ -79,7 +82,10 @@ class ApiService {
                 null,
             );
 
-            console.log("Settings POST response", response);
+            if (response && response.error) {
+                errorToast("Failed to delete condition.")
+                return null;
+            }
 
             return response;
 

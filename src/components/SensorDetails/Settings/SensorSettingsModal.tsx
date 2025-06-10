@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
-import {AlertCondition, Sensor} from "../../types/StoreTypes.ts";
-import "../../styles/SensorDetails/SensorDetails.css";
-import useSensorsStore from "../../stores/SensorsStore.ts";
+import {AlertCondition, Sensor} from "../../../types/StoreTypes.ts";
+import "../../../styles/SensorDetails/SensorDetails.css";
+import useSensorsStore from "../../../stores/SensorsStore.ts";
 import AlertConditionItem from "./AlertConditionItem.tsx";
 import NewAlertConditionForm from "./NewAlertConditionForm.tsx";
 
@@ -29,8 +29,8 @@ const SensorSettingsModal: React.FC<SensorSettingsModalProps> = ({ sensor, onClo
         await deleteAlertCondition(sensor.type, param);
     };
 
-    const handleAdd = async (type: string, param: string, alert:AlertCondition) => {
-        await  addAlertCondition(type, param, alert);
+    const handleAdd = async (alert:AlertCondition) => {
+        await  addAlertCondition(alert);
     }
 
     return (

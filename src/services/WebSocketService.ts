@@ -5,27 +5,29 @@ import {AuthService} from "./AuthService.ts";
 class WebSocketService {
     private telemetrySocket: WebSocket | null = null;
     private isTelemetryConnected: boolean = false;
+    private isTelemetryConnecting: boolean = false;
 
     async connectTelemetry(): Promise<void> {
-        if (this.isTelemetryConnected) {
-            console.warn("Telemetry WebSocket is already connected.");
+        if (this.isTelemetryConnected || this.isTelemetryConnecting) {
+            console.warn("Telemetry WebSocket is already connected or connecting.");
             return;
         }
+
+        this.isTelemetryConnecting = true;
 
         const token = await AuthService.getAccessToken();
         if (!token) {
             errorToast("Failed to connect to sensors.");
+            this.isTelemetryConnecting = false;
             return;
         }
 
         this.telemetrySocket = new WebSocket(`ws://localhost:8081/ws/telemetry?token=${token}`);
 
-
-
-
         this.telemetrySocket.onopen = () => {
             console.log("Telemetry WebSocket opened");
             this.isTelemetryConnected = true;
+            this.isTelemetryConnecting = false;
         };
 
         this.telemetrySocket.onmessage = (event) => {
@@ -35,12 +37,14 @@ class WebSocketService {
         this.telemetrySocket.onclose = () => {
             console.warn("Telemetry WebSocket closed");
             this.isTelemetryConnected = false;
+            this.isTelemetryConnecting = false;
             this.telemetrySocket = null;
         };
 
         this.telemetrySocket.onerror = (e) => {
             errorToast("Failed to connect to sensors.");
             console.error("Telemetry WebSocket error", e);
+            this.isTelemetryConnecting = false;
         };
     }
 

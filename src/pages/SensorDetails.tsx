@@ -6,7 +6,7 @@ import SensorDetailsAlerts from "../components/SensorDetails/SensorDetailsAlerts
 import React, {useState} from "react";
 import {useParams} from "react-router-dom";
 import SensorDetailsBasicInfo from "../components/SensorDetails/SensorDetailsBasicInfo.tsx";
-import SensorSettingsModal from "../components/SensorDetails/SensorSettingsModal.tsx";
+import SensorSettingsModal from "../components/SensorDetails/Settings/SensorSettingsModal.tsx";
 
 
 const SensorDetails: React.FC = () => {

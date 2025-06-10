@@ -32,7 +32,7 @@ interface SensorStoreState {
     getAllSensorsId: () => string[];
     checkSensorsTypeFromId: (id: string, type: string) => boolean;
     getAlertConditions: () => Promise<AlertCondition[]>;
-    addAlertCondition: (type: string, param: string, condition: AlertCondition) => Promise<void>;
+    addAlertCondition: (condition: AlertCondition) => Promise<void>;
     deleteAlertCondition: (type: string, param: string) => Promise<void>;
 }
 
@@ -140,9 +140,9 @@ const useSensorsStore = create<SensorStoreState>()(
                 }
             },
 
-            addAlertCondition: async (type: string, param: string, alertCondition: AlertCondition)=> {
+            addAlertCondition: async (alertCondition: AlertCondition)=> {
                 try {
-                    await ApiService.addCondition(type, param, alertCondition);
+                    await ApiService.addCondition(alertCondition);
                     await get().getAlertConditions();
                 } catch (error) {
                     console.error("Error fetching alert conditions:", error);

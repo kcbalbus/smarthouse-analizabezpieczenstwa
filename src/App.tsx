@@ -36,27 +36,21 @@ function App() {
                   <Route path="/" element={
                       <Home />
                   } />
-                  <Route path="/sensors" element={
-                      <RequireAuth>
-                          <RequireWebSocket>
-                              <Sensors />
-                          </RequireWebSocket>
-                      </RequireAuth>
-                  } />
-                  <Route path="/alerts" element={
-                      <RequireAuth>
-                          <RequireWebSocket>
-                              <Alerts />
-                          </RequireWebSocket>
-                      </RequireAuth>
-                  } />
-                  <Route path="/sensors/:id" element={
-                      <RequireAuth>
-                          <RequireWebSocket>
-                              <SensorDetails />
-                          </RequireWebSocket>
-                      </RequireAuth>
-                  } />
+                  <Route
+                      path="/*"
+                      element={
+                          <RequireAuth>
+                              <RequireWebSocket>
+                                  <Routes>
+                                      <Route path="sensors" element={<Sensors />} />
+                                      <Route path="alerts" element={<Alerts />} />
+                                      <Route path="sensors/:id" element={<SensorDetails />} />
+
+                                  </Routes>
+                              </RequireWebSocket>
+                          </RequireAuth>
+                      }
+                  />
 
               </Routes>
 

@@ -1,10 +1,10 @@
 import React, {useState} from "react";
-import { AlertCondition } from "../../types/StoreTypes";
-import "../../styles/SensorDetails/SensorDetails.css";
+import { AlertCondition } from "../../../types/StoreTypes.ts";
+import "../../../styles/SensorDetails/SensorDetails.css";
 
 interface NewAlertConditionFormProps {
     deviceType: string;
-    onAdd: (type: string, param: string, alertCondition: AlertCondition) => void;
+    onAdd: (alertCondition: AlertCondition) => void;
     onClose: () => void;
 }
 
@@ -41,7 +41,7 @@ const NewAlertConditionForm: React.FC<NewAlertConditionFormProps> = ({deviceType
             ...formData
         };
 
-        onAdd(deviceType, newCondition.parameter, newCondition);
+        onAdd(newCondition);
         onClose();
 
     };
