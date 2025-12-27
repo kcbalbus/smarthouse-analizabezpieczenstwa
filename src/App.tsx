@@ -12,6 +12,7 @@ import {useAuth0} from "@auth0/auth0-react";
 import {useEffect} from "react";
 import {AuthService} from "./services/AuthService.ts";
 import {ToastContainer} from "react-toastify";
+import Scenarios from "./pages/Scenarios.tsx";
 
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
                                   <Routes>
                                       <Route path="sensors" element={<Sensors />} />
                                       <Route path="alerts" element={<Alerts />} />
+                                      <Route path="scenarios" element={<Scenarios />} />
                                       <Route path="sensors/:id" element={<SensorDetails />} />
 
                                   </Routes>

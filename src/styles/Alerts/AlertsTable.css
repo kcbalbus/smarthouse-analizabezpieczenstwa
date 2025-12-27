@@ -150,3 +150,8 @@
 .reset-button-div {
     margin-left: auto;
 }
+
+.scenarios-table .alerts-header,
+.scenarios-table .alert-record {
+    grid-template-columns: 1.25fr 1fr 1fr 1.5fr;
+}

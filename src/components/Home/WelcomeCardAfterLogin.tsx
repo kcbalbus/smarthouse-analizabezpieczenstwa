@@ -18,6 +18,7 @@ const WelcomeCardAfterLogin: React.FC = () => {
             <div className="button_section">
                 <button onClick={() => {navigate("/sensors")}}>View Sensors</button>
                 <button onClick={() => {navigate("/alerts")}}>Check Alerts</button>
+                <button onClick={() => {navigate("/scenarios")}}>Check Scenarios</button>
             </div>
         </div>
     );

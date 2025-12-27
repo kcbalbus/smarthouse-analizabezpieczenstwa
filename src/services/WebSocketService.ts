@@ -67,6 +67,7 @@ class WebSocketService {
                 useSensorsStore.getState().setTelemetry(parsed.payload);
                 break;
             case "scenario":
+                console.log("Received scenarios:", parsed.payload);
                 useSensorsStore.getState().setScenarios(parsed.payload);
                 break;
             default:

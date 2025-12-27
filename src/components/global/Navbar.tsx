@@ -22,6 +22,7 @@ const Navbar = () => {
                     </NavLink>
                     <NavLink to="/sensors" className="navbar__link">Sensors</NavLink>
                     <NavLink to="/alerts" className="navbar__link">Alerts</NavLink>
+                    <NavLink to="/scenarios" className="navbar__link">Scenarios</NavLink>
                 </div>
                 <div className="navbar__right">
                     <ResetStoreButton />
