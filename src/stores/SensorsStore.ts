@@ -8,21 +8,24 @@ import {
     SmokeSensor,
     TemperatureSensor,
     MotionSensor,
-    LightSensor, Alert, AlertCondition
+    LightSensor, Alert, AlertCondition, Scenario
 } from "../types/StoreTypes.ts";
 
 
 interface SensorStoreState {
     sensors: Sensor[]
     alerts: Alert[]
+    scenarios: Scenario[]
     conditions: AlertCondition[]
     resetStore: () => void
     resetAlerts: () => void
+    resetScenarios: () => void
     resetSensors: () => void
     startWebSocketConnection: () => void
     closeWebSocketConnection: () => void
     setTelemetry: (telemetry: Sensor) => void
     setAlerts: (alert: Alert) => void
+    setScenarios: (scenario: Scenario) => void
     getEnergySensors: () => EnergySensor[];
     getFridgeSensors: () => FridgeSensor[];
     getSmokeSensors: () => SmokeSensor[];
@@ -41,10 +44,11 @@ const useSensorsStore = create<SensorStoreState>()(
         (set, get) => ({
             sensors: [],
             alerts: [],
+            scenarios: [],
             conditions: [],
 
             resetStore: () => {
-                set({ sensors: [], alerts: [] });
+                set({ sensors: [], alerts: [] , scenarios: [] });
             },
 
             resetSensors: () => {
@@ -53,6 +57,10 @@ const useSensorsStore = create<SensorStoreState>()(
 
             resetAlerts: () => {
                 set({ alerts: [] });
+            },
+
+            resetScenarios: () => {
+                set({ scenarios: [] });
             },
 
             startWebSocketConnection: () => {
@@ -111,6 +119,15 @@ const useSensorsStore = create<SensorStoreState>()(
                 set((state => {
                     return {
                         alerts: [alert, ...state.alerts]
+                    }
+                }));
+            },
+
+            setScenarios: (scenario: Scenario) => {
+                console.log("recieved scenarios", scenario);
+                set((state => {
+                    return {
+                        scenarios: [scenario, ...state.scenarios]
                     }
                 }));
             },

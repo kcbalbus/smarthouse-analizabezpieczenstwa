@@ -57,3 +57,18 @@ export interface AlertCondition {
     description: string;
 }
 
+export interface ScenarioAction {
+    deviceId: string;
+    deviceTypePattern: string;
+    command: string;
+    value: string;
+}
+
+export interface Scenario {
+    id: string;
+    name: string;
+    triggerType: string;
+    triggerContidionId: string;
+    action: ScenarioAction[];
+}
+

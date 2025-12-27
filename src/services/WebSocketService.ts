@@ -66,6 +66,9 @@ class WebSocketService {
             case "telemetry":
                 useSensorsStore.getState().setTelemetry(parsed.payload);
                 break;
+            case "scenario":
+                useSensorsStore.getState().setScenarios(parsed.payload);
+                break;
             default:
                 console.error("Unknown message type: " + messageType);
         }
