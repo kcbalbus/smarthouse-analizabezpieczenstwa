@@ -4,7 +4,7 @@ import "../styles/Sensors/SensorsPage.css"
 
 const Sensors = () => {
     const { getEnergySensors, getFridgeSensors, getMotionSensors,
-        getTemperatureSensors, getSmokeSensors, getLightSensors} = useSensorsStore();
+        getTemperatureSensors, getSmokeSensors, getLightSensors, getWindowSensors} = useSensorsStore();
 
     return (
         <div className="sensors-page">
@@ -17,6 +17,7 @@ const Sensors = () => {
                     <li><a href="#motion">🏃 Motion</a></li>
                     <li><a href="#smoke">💨 Smoke</a></li>
                     <li><a href="#temperature">🌡️ Temperature</a></li>
+                    <li><a href="#window">🔲 Window</a></li>
                 </ul>
             </nav>
             <div className="sensors-list">
@@ -26,6 +27,7 @@ const Sensors = () => {
                 <SensorsSection id="motion" title="Motion Sensors 🏃🏼‍♀️" sensors={getMotionSensors()} />
                 <SensorsSection id="smoke" title="Smoke Sensors 💨" sensors={getSmokeSensors()} />
                 <SensorsSection id="temperature" title="Temperature Sensors 🌡️" sensors={getTemperatureSensors()} />
+                <SensorsSection id="window" title="Window Sensors 🔲" sensors={getWindowSensors()} />
             </div>
         </div>
     )

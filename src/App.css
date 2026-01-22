@@ -20,6 +20,7 @@
   --motion: rgba(255, 105, 180, 0.74);
   --smoke: rgba(169, 169, 169, 0.75);
   --temperature: rgba(255, 69, 0, 0.75);
+  --window: rgba(100, 149, 237, 0.78);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

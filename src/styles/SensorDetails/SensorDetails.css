@@ -42,6 +42,10 @@
     border-color: var(--temperature);
 }
 
+.window-details-section {
+    border-color: var(--window);
+}
+
 .sensor-details-basic-info {
     display: flex;
     flex-direction: row;
@@ -132,6 +136,11 @@
 
 .fab-settings-temperature {
     background-color: var(--temperature);
+}
+
+/* FAB settings button for window sensors */
+.fab-settings-window {
+   background-color: var(--window);
 }
 
 

@@ -7,7 +7,8 @@ import {
     MotionSensor,
     Sensor,
     SmokeSensor,
-    TemperatureSensor
+    TemperatureSensor,
+    WindowSensor
 } from "../../types/StoreTypes.ts";
 import EnergySensorDetailsMeasurements from "./EnergySensorDetailsMeasurements.tsx";
 import FridgeSensorDetailsMeasurements from "./FridgeSensorDetailsMeasurements.tsx";
@@ -15,6 +16,7 @@ import LightSensorDetailsMeasurements from "./LightSensorDetailsMeasurements.tsx
 import MotionSensorDetailsMeasurements from "./MotionSensorDetailsMeasurements.tsx";
 import SmokeSensorDetailsMeasurements from "./SmokeSensorDetailsMeasurements.tsx";
 import TemperatureSensorDetailsMeasurements from "./TemperatureSensorDetailsMeasurements.tsx";
+import WindowSensorDetailsMeasurements from "./WindowSensorDetailsMeasurements.tsx";
 
 interface SensorDetailsMeasurementsProps {
     sensor: Sensor
@@ -36,6 +38,8 @@ const SensorDetailsMeasurements: React.FC<SensorDetailsMeasurementsProps> = ({se
                 return <SmokeSensorDetailsMeasurements sensor={sensor as SmokeSensor}/>;
             case "temperature":
                 return <TemperatureSensorDetailsMeasurements sensor={sensor as TemperatureSensor}/>;
+            case "window":
+                return <WindowSensorDetailsMeasurements sensor={sensor as WindowSensor}/>;
             default:
                 return <p>Unknown sensor type</p>;
         }

@@ -8,7 +8,7 @@ import {
     SmokeSensor,
     TemperatureSensor,
     MotionSensor,
-    LightSensor, Alert, AlertCondition, Scenario
+    LightSensor, Alert, AlertCondition, Scenario, WindowSensor
 } from "../types/StoreTypes.ts";
 
 
@@ -37,6 +37,7 @@ interface SensorStoreState {
     getAlertConditions: () => Promise<AlertCondition[]>;
     addAlertCondition: (condition: AlertCondition) => Promise<void>;
     deleteAlertCondition: (type: string, param: string) => Promise<void>;
+    getWindowSensors: () => WindowSensor[];
 }
 
 const useSensorsStore = create<SensorStoreState>()(
@@ -113,6 +114,9 @@ const useSensorsStore = create<SensorStoreState>()(
                 return get().sensors.filter(sensor => sensor.type === 'light') as LightSensor[];
             },
 
+            getWindowSensors: () => {
+                return get().sensors.filter(sensor => sensor.type === 'window') as WindowSensor[];
+            },
 
 
             setAlerts: (alert: Alert) => {

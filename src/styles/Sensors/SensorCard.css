@@ -100,6 +100,13 @@
     border: var(--sensor-border-width-hover) solid var(--temperature);
 }
 
+.window-sensor-card {
+    border: var(--sensor-border-width) solid var(--window);
+}
+
+.window-sensor-card:hover {
+    border: var(--sensor-border-width-hover) solid var(--window);
+}
 
 .energy-sensor-card .sensor-card-header {
     background-color: color-mix(in srgb, var(--energy) 20%, white);
@@ -123,4 +130,8 @@
 
 .temperature-sensor-card .sensor-card-header {
     background-color: color-mix(in srgb, var(--temperature) 20%, white);
+}
+
+.window-sensor-card .sensor-card-header {
+    background-color: color-mix(in srgb, var(--window) 20%, white);
 }

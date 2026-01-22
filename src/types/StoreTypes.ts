@@ -72,3 +72,7 @@ export interface Scenario {
     timestamp: number;
 }
 
+export interface WindowSensor extends Sensor {
+    type: 'window';
+    isOpen: boolean;
+}

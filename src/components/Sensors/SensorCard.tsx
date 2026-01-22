@@ -6,7 +6,8 @@ import {
     MotionSensor,
     Sensor,
     SmokeSensor,
-    TemperatureSensor
+    TemperatureSensor,
+    WindowSensor
 } from "../../types/StoreTypes.ts";
 import SensorCardHeader from "./SensorCardHeader.tsx";
 import "../../styles/Sensors/SensorCard.css";
@@ -69,6 +70,15 @@ const SensorCard: React.FC<SensorCardProps> = ({ sensor }) => {
                         <p>Humidity: {temp.humidity.toFixed(1)}%</p>
                     </>
                 ); }
+            case "window":
+                {
+                    const win = sensor as WindowSensor;
+                    return (
+                        <>
+                            <p>Window: {win.isOpen ? "Open" : "Closed"}</p>
+                        </>
+                    );
+                }
             default:
                 return <p>Unsupported sensor type</p>;
         }
