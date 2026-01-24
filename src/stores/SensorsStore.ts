@@ -8,7 +8,7 @@ import {
     SmokeSensor,
     TemperatureSensor,
     MotionSensor,
-    LightSensor, Alert, AlertCondition, Scenario, WindowSensor
+    LightSensor, Alert, AlertCondition, Scenario, WindowSensor, ScenarioDefinition
 } from "../types/StoreTypes.ts";
 
 
@@ -17,6 +17,7 @@ interface SensorStoreState {
     alerts: Alert[]
     scenarios: Scenario[]
     conditions: AlertCondition[]
+    scenarioDefinitions: ScenarioDefinition[]
     resetStore: () => void
     resetAlerts: () => void
     resetScenarios: () => void
@@ -36,6 +37,8 @@ interface SensorStoreState {
     checkSensorsTypeFromId: (id: string, type: string) => boolean;
     getAlertConditions: () => Promise<AlertCondition[]>;
     addAlertCondition: (condition: AlertCondition) => Promise<void>;
+    getScenarioDefinitions: () => Promise<ScenarioDefinition[]>;
+    setScenarioDefinitionEnabled: (id: string, enabled: boolean) => Promise<void>;
     deleteAlertCondition: (type: string, param: string) => Promise<void>;
     getWindowSensors: () => WindowSensor[];
 }
@@ -47,9 +50,10 @@ const useSensorsStore = create<SensorStoreState>()(
             alerts: [],
             scenarios: [],
             conditions: [],
+            scenarioDefinitions: [],
 
             resetStore: () => {
-                set({ sensors: [], alerts: [] , scenarios: [] });
+                set({ sensors: [], alerts: [] , scenarios: [], conditions: [], scenarioDefinitions: []});
             },
 
             resetSensors: () => {
@@ -158,6 +162,28 @@ const useSensorsStore = create<SensorStoreState>()(
                 } catch (error) {
                     console.error("Error fetching alert conditions:", error);
                     return [];
+                }
+            },
+
+            getScenarioDefinitions: async () => {
+                try {
+                    const response = await ApiService.getAllScenarioDefinitions();
+                    if (response) {
+                        set({ scenarioDefinitions: response });
+                    }
+                    return response;
+                } catch (error) {
+                    console.error("Error fetching scenario definitions:", error);
+                    return [];
+                }
+            },
+
+            setScenarioDefinitionEnabled: async (id: string, enabled: boolean) => {
+                try {
+                    await ApiService.setScenarioEnabled(id, enabled);
+                    await get().getScenarioDefinitions();
+                } catch (error) {
+                    console.error(`Error setting scenario enabled for ${id}:`, error);
                 }
             },
 

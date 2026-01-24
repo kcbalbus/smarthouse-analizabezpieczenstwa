@@ -3,6 +3,7 @@ import useSensorsStore from "../stores/SensorsStore.ts";
 import ScenariosControlBar from "../components/Scenarios/ScenariosControlBar.tsx";
 import ScenariosTable from "../components/Scenarios/ScenariosTable.tsx";
 import { Scenario } from "../types/StoreTypes.ts";
+import ScenarioDefinitionsListModal from "../components/Scenarios/ScenarioDefinitionsListModal.tsx";
 
 const Scenarios: React.FC = () => {
     const { scenarios } = useSensorsStore();
@@ -11,6 +12,7 @@ const Scenarios: React.FC = () => {
     const [dateFrom, setDateFrom] = useState("");
     const [dateTo, setDateTo] = useState("");
     const [triggerTypeFilter, setTriggerTypeFilter] = useState("All");
+    const [showScenariosDefinitionsModal, setShowScenariosDefinitionsModal] = useState(false);
 
     const nameOptions = useMemo(() => {
         return Array.from(new Set(scenarios.map((s: Scenario) => s.name).filter(Boolean)));
@@ -54,6 +56,16 @@ const Scenarios: React.FC = () => {
                 resetFilters={resetFilters}
             />
             <ScenariosTable scenarios={filteredScenarios} />
+
+            <div
+                className={`fab-settings`}
+                onClick={() => setShowScenariosDefinitionsModal(true)}
+            >
+                ⚙️
+            </div>
+            {showScenariosDefinitionsModal && (
+                <ScenarioDefinitionsListModal onClose={() => setShowScenariosDefinitionsModal(false)} />
+            )}
         </div>
     );
 };

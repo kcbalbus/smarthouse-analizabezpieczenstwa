@@ -95,6 +95,30 @@ class ApiService {
         }
     }
 
+    static async getAllScenarioDefinitions() {
+        try {
+            return await RestService.ajax(
+                `${API_URLS.scenario}`,
+                "GET",
+                null
+            );
+        } catch (error) {
+            console.error("Failed to fetch scenarios:", error);
+        }
+    }
+
+    static async setScenarioEnabled(id: string, enabled: boolean) {
+        try {
+            return await RestService.ajax(
+                `${API_URLS.scenario}/${id}/enabled`,
+                "PUT",
+                { enabled }
+            );
+        } catch (error) {
+            console.error(`Failed to set enabled for scenario ${id}:`, error);
+            errorToast("Failed to update scenario enabled state.");
+        }
+    }
 
 }
 

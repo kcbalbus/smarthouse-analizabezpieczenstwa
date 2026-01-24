@@ -99,6 +99,7 @@
     text-align: center;
     box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     cursor: pointer;
+    background-color: var(--primary);
 
     display: flex;
     justify-content: center;

@@ -3,6 +3,7 @@ export const API_URLS: Record<string, string> = {
     websocket: `${API_ROOT_URL}/ws`,
     websocket_telemetry: `${API_ROOT_URL}/ws/telemetry`,
     condition_alert: `${API_ROOT_URL}/alert/condition`,
+    scenario: `${API_ROOT_URL}/scenario`,
 };
 
 

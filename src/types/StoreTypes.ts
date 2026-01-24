@@ -72,6 +72,15 @@ export interface Scenario {
     timestamp: number;
 }
 
+export interface ScenarioDefinition {
+    id: string;
+    name: string;
+    triggerType: string;
+    triggerConditionId: string;
+    actions: ScenarioAction[];
+    enabled: boolean;
+}
+
 export interface WindowSensor extends Sensor {
     type: 'window';
     isOpen: boolean;
