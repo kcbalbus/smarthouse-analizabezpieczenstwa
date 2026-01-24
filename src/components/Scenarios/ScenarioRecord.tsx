@@ -20,7 +20,7 @@ const ScenarioRecord: React.FC<ScenarioRecordProps> = ({ scenario }) => {
 
     return (
         <div className="alert-record scenarios-record">
-            <p >{scenario.name}</p>
+            <p className="scenario-name">{scenario.name}</p>
             <p >{displayDate(scenario.timestamp)}</p>
             <p >{scenario.triggerConditionId}</p>
             <p >{actionsText}</p>

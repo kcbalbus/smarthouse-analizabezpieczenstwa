@@ -7,19 +7,35 @@ import { Scenario } from "../types/StoreTypes.ts";
 const Scenarios: React.FC = () => {
     const { scenarios } = useSensorsStore();
 
-    const [nameFilter, setNameFilter] = useState("");
+    const [nameFilter, setNameFilter] = useState("All");
+    const [dateFrom, setDateFrom] = useState("");
+    const [dateTo, setDateTo] = useState("");
     const [triggerTypeFilter, setTriggerTypeFilter] = useState("All");
 
-    const filteredScenarios = useMemo(() => {
-        return scenarios.filter((scenario: Scenario) => {
-            const matchesName = nameFilter === "" || scenario.name.toLowerCase().includes(nameFilter.toLowerCase());
-            const matchesTrigger = triggerTypeFilter === "All" || scenario.triggerType === triggerTypeFilter;
-            return matchesName && matchesTrigger;
-        });
-    }, [scenarios, nameFilter, triggerTypeFilter]);
+    const nameOptions = useMemo(() => {
+        return Array.from(new Set(scenarios.map((s: Scenario) => s.name).filter(Boolean)));
+    }, [scenarios]);
+
+    const filteredScenarios = scenarios.filter((scenario: Scenario) => {
+        const matchesName = nameFilter === "All" || scenario.name === nameFilter;
+
+        const scenarioDate = scenario.timestamp ? new Date(scenario.timestamp) : null;
+        const fromDate = dateFrom ? new Date(dateFrom) : null;
+        const toDate = dateTo ? new Date(dateTo) : null;
+        const matchesDate =
+            (!fromDate || (scenarioDate && scenarioDate >= fromDate)) &&
+            (!toDate || (scenarioDate && scenarioDate <= toDate));
+
+        const matchesTrigger = triggerTypeFilter === "All" ||
+            (scenario.triggerConditionId && scenario.triggerConditionId.toLowerCase().includes(triggerTypeFilter.toLowerCase()));
+
+        return matchesName && matchesDate && matchesTrigger;
+    });
 
     const resetFilters = () => {
-        setNameFilter("");
+        setNameFilter("All");
+        setDateFrom("");
+        setDateTo("");
         setTriggerTypeFilter("All");
     }
 
@@ -28,6 +44,11 @@ const Scenarios: React.FC = () => {
             <ScenariosControlBar
                 nameFilter={nameFilter}
                 setNameFilter={setNameFilter}
+                nameOptions={nameOptions}
+                dateFrom={dateFrom}
+                setDateFrom={setDateFrom}
+                dateTo={dateTo}
+                setDateTo={setDateTo}
                 triggerTypeFilter={triggerTypeFilter}
                 setTriggerTypeFilter={setTriggerTypeFilter}
                 resetFilters={resetFilters}

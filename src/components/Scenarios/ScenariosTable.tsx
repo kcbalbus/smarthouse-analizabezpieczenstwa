@@ -22,7 +22,7 @@ const ScenariosTable: React.FC<ScenariosTableProps> = ({ scenarios }) => {
                     <p>No scenarios found.</p>
                 ) : (
                     scenarios.map((scenario, idx) => (
-                        <ScenarioRecord key={scenario.id ?? idx} scenario={scenario} />
+                        <ScenarioRecord key={idx} scenario={scenario} />
                     ))
                 )}
             </div>

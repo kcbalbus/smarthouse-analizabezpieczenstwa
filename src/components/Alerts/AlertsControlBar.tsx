@@ -62,6 +62,7 @@ const AlertsControlBar: React.FC<AlertsControlBarProps> = ({
                     <option value="motion">Motion</option>
                     <option value="smoke">Smoke</option>
                     <option value="temperature">Temperature</option>
+                    <option value="window">Window</option>
                 </select>
             </div>
 
